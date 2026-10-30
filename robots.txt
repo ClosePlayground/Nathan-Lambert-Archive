@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://closeplayground.github.io/Nathan-Lambert-Archive/sitemap.xml

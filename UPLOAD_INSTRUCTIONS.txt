@@ -1,0 +1,15 @@
+NATHAN LAMBERT ARCHIVE - GITHUB PAGES
+
+1. Open https://github.com/ClosePlayground/Nathan-Lambert-Archive
+2. Click Add file > Upload files.
+3. Unzip this package on your computer, then upload the CONTENTS of the folder (not the folder itself).
+4. The package includes posts.csv and videos.csv. GitHub may ask to replace the existing copies; these are the source versions used to generate the site.
+5. Click Commit changes.
+6. In Settings > Pages, select Deploy from a branch, main, /(root), Save.
+7. Visit https://closeplayground.github.io/Nathan-Lambert-Archive/ after deployment.
+
+IMPORTANT: There are 887 HTML files inside posts/ and 230 inside videos/. GitHub web upload may be slow or refuse very large batches. If that happens, upload in batches, or use GitHub Desktop. Preserve the folder structure.
+
+UPDATES: Regenerate the whole site after changing the CSVs. Editing only posts.csv does not update the HTML pages or search index.
+
+This archive contains public-facing content extracted from a Facebook export. Review for private or unintended content before making it public.
