@@ -1,0 +1,40 @@
+AUTOMATIC NATHAN LAMBERT ARCHIVE - ONE-TIME SETUP
+
+Files to upload to the ROOT of your existing GitHub repository:
+  generate_site.py
+  posts.csv
+  videos.csv
+
+Also create this nested file in GitHub:
+  .github/workflows/publish.yml
+
+BROWSER ONLY:
+1. Open github.com/ClosePlayground/Nathan-Lambert-Archive
+2. Upload generate_site.py and the two CSVs using Add file > Upload files.
+   Replace the existing CSVs if prompted.
+3. Create the workflow using Add file > Create new file.
+   For the filename enter .github/workflows/publish.yml
+   Copy the content of publish.yml from this package and commit.
+   Alternatively, github.dev can upload the entire .github/workflows folder.
+4. Open repository Settings > Pages > Build and deployment.
+   Change Source to GitHub Actions (NOT Deploy from a branch).
+5. Open Actions > Build and publish archive > Run workflow if the initial
+   upload did not trigger the workflow automatically.
+6. Wait for the green check in Actions, then open:
+   https://closeplayground.github.io/Nathan-Lambert-Archive/
+
+FUTURE UPDATES:
+1. Use your Google Colab converter to create new posts.csv and videos.csv.
+2. Upload and replace only these two CSVs in GitHub.
+3. The workflow automatically generates all post/video pages and deploys them.
+
+IMPORTANT:
+- You do NOT need to upload generated posts/ or videos/ folders.
+- Leave old generated folders out of the repository; the deployment uses _site.
+- Your original CSV IDs are sequential. If new exports reorder them, links
+  can change. We should improve the Colab converter to generate stable IDs
+  before relying on post-page URLs long term.
+- This workflow will FAIL if CSVs contain 'product.brand' placeholders.
+  The included posts.csv has had five such placeholders removed.
+- Review public content before publishing: the export may include posts
+  without text and links to third-party pages.
