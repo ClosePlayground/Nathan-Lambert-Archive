@@ -1,0 +1,37 @@
+Deputy Speaker, I normally raise fairly specific Preston Reservoir matters, but we did have
+a debate earlier this week about data centres and AI, and I wanted to pick up some of the
+points from that debate. I won't repeat the important points that were made about planning,
+energy use and water use, but rather I'd like to pick up on this important notion
+that data centres are not really data centres. As we spoke about, these are centres that
+are not full of traditional file servers, they are not storing people's data or photos
+or anything else. Rather, they are predominantly filled with processing units, GPUs, and what
+they actually are are the giant artificial brains that we are building to do our thinking
+for us when we use applications like Clawd and ChatGPT. They should properly, Deputy
+Speaker, be called compute centres or inference centres, and I do think, I don't think
+it's deliberate, but I think calling them data centres makes it sound more innocuous
+and underplays just how radical this technology is.
+A second thing, Deputy Speaker, that I think causes people to underestimate how radical
+this technology is, is the fact that the standard models of Clawd or ChatGPT that
+we have on our phones, whilst remarkable technology, are very neutered compared to
+the extraordinary capacity of the frontier models that these companies have built already,
+let alone the ones they are attempting to build. We have this strange situation
+with AI, the reverse of what normally happens. What normally happens is that the people,
+the public outside an industry are worried, the people inside an industry, be it fracking
+or the nuclear industry, are normally less worried. That's the normal course of things.
+With AI, it is the other way round. Even the criticisms of the Greens and the
+Victorian socialists are mainly focusing on things on water and energy use. They
+are important issues, but when you listen to some of the software engineers and researchers
+who have built these frontier models and used them day to day, they are seriously
+worried about what it will look like when we deploy at massive scale these artificial
+creatures that can outthink humans across a broad domain of tasks. They are worried
+not only what that will do economically, but what it might do in a military sense
+and what it might do in a very fundamental, existential way for humanity. Of course,
+there are all sorts of positive things that can come from this, and I want to be clear
+that I am just talking about the long tail risks, but as someone with a little bit of
+work experience in this sector, the thing that I am most worried now for my children
+is no longer climate change, it's not nuclear weapons, it is where AI might go. I just
+encourage the other parties, the Greens and the Liberals, who I think have not
+fully yet engaged with this issue, to think clearly about it as the Minister and as our
+Labor Government are doing so, because I do think, Deputy Speaker, that this will be
+one of the most significant regulatory challenges that we in the Victorian
+Government and indeed governments across the globe face in the coming decades.
