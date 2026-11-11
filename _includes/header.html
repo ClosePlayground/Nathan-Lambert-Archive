@@ -1,0 +1,14 @@
+<header class="site-header">
+  <div class="shell">
+    <div class="header-top">
+      <a class="brand" href="{{ '/' | relative_url }}">Nathan Lambert Archive</a>
+      <p class="subtitle">Public Facebook posts and videos from the Member for Preston</p>
+    </div>
+    <nav aria-label="Primary">
+      <a href="{{ '/' | relative_url }}"{% if page.section == 'posts' and page.layout != 'all' %} aria-current="page"{% endif %}>Posts</a>
+      <a href="{{ '/videos/' | relative_url }}"{% if page.section == 'videos' and page.layout != 'all' %} aria-current="page"{% endif %}>Videos</a>
+      <a href="{{ '/all/' | relative_url }}"{% if page.layout == 'all' %} aria-current="page"{% endif %}>All content</a>
+      <a href="{{ '/about/' | relative_url }}"{% if page.section == 'about' %} aria-current="page"{% endif %}>About</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,21 @@
+{%- assign page_title = page.seo_title | default: page.title | default: site.title -%}
+{%- assign full_title = page_title -%}
+{%- unless page_title == site.title -%}
+  {%- assign full_title = page_title | append: " | " | append: site.title -%}
+{%- endunless -%}
+{%- assign meta_description = page.description | default: site.description | strip_html | normalize_whitespace -%}
+{%- assign canonical = page.url | absolute_url -%}
+<!doctype html>
+<html lang="{{ site.lang | default: 'en-AU' }}">
+<head>
+  {% include head.html %}
+</head>
+<body class="{% if page.layout %}layout-{{ page.layout }}{% endif %}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include header.html %}
+  <main id="main" class="shell">
+    {{ content }}
+  </main>
+  {% include footer.html %}
+</body>
+</html>

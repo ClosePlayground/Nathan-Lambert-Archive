@@ -1,0 +1,15 @@
+{% if page.pager.total_pages > 1 %}
+<nav class="pager" aria-label="Pagination">
+  {% if page.pager.previous_url %}
+  <a class="pager-link" href="{{ page.pager.previous_url | relative_url }}" rel="prev">Previous</a>
+  {% else %}
+  <span class="pager-link is-disabled">Previous</span>
+  {% endif %}
+  <span class="pager-status">Page {{ page.pager.page }} of {{ page.pager.total_pages }}</span>
+  {% if page.pager.next_url %}
+  <a class="pager-link" href="{{ page.pager.next_url | relative_url }}" rel="next">Next</a>
+  {% else %}
+  <span class="pager-link is-disabled">Next</span>
+  {% endif %}
+</nav>
+{% endif %}

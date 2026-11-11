@@ -1,0 +1,6 @@
+---
+layout: null
+permalink: /search/posts.json
+sitemap: false
+---
+[{% for post in site.data.archive.posts %}{"url":{{ post.url | relative_url | jsonify }},"title":{{ post.title | jsonify }},"date":{{ post.date_display | jsonify }},"date_iso":{{ post.date_iso | jsonify }},"year":{{ post.year }},"excerpt":{{ post.excerpt | jsonify }},"text":{{ post.text | jsonify }},"transcript":{{ post.transcript | jsonify }},"video_url":{{ post.video_url | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]

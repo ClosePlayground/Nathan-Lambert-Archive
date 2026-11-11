@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<article class="article">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/videos/' | relative_url }}">Videos</a>
+    <span aria-hidden="true">/</span>
+    <span>{{ page.date_display }}</span>
+  </nav>
+  <p class="meta"><time datetime="{{ page.date_iso }}">{{ page.date_display }}</time> <span aria-hidden="true">·</span> {{ page.record_id }}</p>
+  <h1>{{ page.title }}</h1>
+  <p class="meta">Export filename: <code>{{ page.filename | escape }}</code></p>
+  <p class="notice">The video file is not hosted in this archive.</p>
+  {% if page.text == "" %}
+  <p class="notice">No video description was included in the export.</p>
+  {% else %}
+  <h2>Video description</h2>
+  <div class="post-text">{{ page.text | escape }}</div>
+  {% endif %}
+  {% if page.transcript != "" %}
+  <h2>Transcript</h2>
+  <div class="post-text">{{ page.transcript | escape }}</div>
+  {% elsif page.text == "" %}
+  <p class="notice">A full spoken-word transcript is not available.</p>
+  {% else %}
+  <p class="notice">A full spoken-word transcript is not available. The description above is not a transcript.</p>
+  {% endif %}
+  {% if page.post_url %}
+  <h2>Related post</h2>
+  <p><a href="{{ page.post_url | relative_url }}">{{ page.post_title | escape }}</a></p>
+  {% endif %}
+  <p class="back"><a href="{{ '/videos/' | relative_url }}">Back to videos</a></p>
+</article>

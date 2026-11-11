@@ -1,0 +1,26 @@
+{% if include.kind == "videos" %}
+  {% assign records = site.data.archive.videos %}
+  {% assign noun = "videos" %}
+  {% assign label = "Search videos" %}
+{% else %}
+  {% assign records = site.data.archive.posts %}
+  {% assign noun = "posts" %}
+  {% assign label = "Search posts" %}
+{% endif %}
+{% assign years = records | map: "year" | uniq | sort | reverse %}
+<div class="archive-filter" role="search" data-archive-filter data-index="{{ '/search/' | append: noun | append: '.json' | relative_url }}" data-kind="{{ noun }}">
+  <div class="filter-field">
+    <label for="archive-q">{{ label }}</label>
+    <input type="search" id="archive-q" placeholder="Search titles and text" autocomplete="off">
+  </div>
+  <div class="filter-field">
+    <label for="archive-year">Year</label>
+    <select id="archive-year">
+      <option value="">All years</option>
+      {% for year in years %}
+      <option value="{{ year }}">{{ year }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="button" class="filter-reset" hidden>Clear</button>
+</div>
