@@ -41,4 +41,13 @@ jobs:
           find . -name index.html | head -30
           echo "Jekyll configuration:"
           cat _config.yml
+          echo "Number of individual post pages:"
+          find _site/posts -maxdepth 1 -name '*.html' | wc -l
+          echo "Number of individual video pages:"
+          find _site/videos -maxdepth 1 -name '*.html' | wc -l
+          echo "Sample post pages:"
+          find _site/posts -maxdepth 1 -name '*.html' | head -5
+          echo "Sample video pages:"
+          find _site/videos -maxdepth 1 -name '*.html' | head -5
+          
 
