@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#173f52"/>
+  <rect x="64" y="64" width="1072" height="502" rx="18" fill="none" stroke="#3a6576" stroke-width="2"/>
+  <text x="100" y="240" font-family="Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#ffffff">Nathan Lambert</text>
+  <text x="100" y="330" font-family="Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#ffffff">Archive</text>
+  <text x="100" y="430" font-family="Helvetica, Arial, sans-serif" font-size="34" fill="#cfe0e6">Public Facebook posts and videos</text>
+  <text x="100" y="482" font-family="Helvetica, Arial, sans-serif" font-size="34" fill="#cfe0e6">from the Member for Preston</text>
+</svg>

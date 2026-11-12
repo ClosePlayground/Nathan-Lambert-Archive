@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<header class="page-head">
+  <p class="eyebrow">{{ page.eyebrow | default: "Index" }}</p>
+  <h1>{{ page.title }}</h1>
+  {{ content }}
+  <p class="meta">{{ page.total_count }} records</p>
+</header>
+{% if page.groups.size > 0 %}
+<nav class="year-nav" aria-label="Jump to year">
+  {% for group in page.groups %}<a href="#{{ group.year }}">{{ group.year }}</a>{% endfor %}
+</nav>
+{% for group in page.groups %}
+<section class="year-block" id="{{ group.year }}">
+  <h2>{{ group.year }} <span class="meta">{{ group.items.size }}</span></h2>
+  <ul class="index-list">
+    {% for item in group.items %}
+    <li>
+      <time datetime="{{ item.date_iso }}">{{ item.date_display }}</time>
+      <a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>
+      {% if item.kind %}<span class="index-kind">{{ item.kind }}</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}
+{% else %}
+<p class="notice">No records found.</p>
+{% endif %}

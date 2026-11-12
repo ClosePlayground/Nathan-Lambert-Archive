@@ -1,0 +1,6 @@
+---
+layout: null
+permalink: /search/videos.json
+sitemap: false
+---
+[{% for video in site.data.archive.videos %}{"url":{{ video.url | relative_url | jsonify }},"title":{{ video.title | jsonify }},"date":{{ video.date_display | jsonify }},"date_iso":{{ video.date_iso | jsonify }},"year":{{ video.year }},"excerpt":{{ video.excerpt | jsonify }},"text":{{ video.text | jsonify }},"transcript":{{ video.transcript | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]

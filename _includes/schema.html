@@ -1,0 +1,37 @@
+{% assign website_id = '/' | absolute_url | append: '#website' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ website_id | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "inLanguage": "en-AU",
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ site.title | jsonify }},
+        "url": {{ '/' | absolute_url | jsonify }}
+      }
+    },
+    {% if page.schema %}
+    {{ page.schema | jsonify }}
+    {% else %}
+    {
+      "@type": {{ page.schema_type | default: 'WebPage' | jsonify }},
+      "@id": {{ canonical | append: '#page' | jsonify }},
+      "url": {{ canonical | jsonify }},
+      "name": {{ page.title | default: site.title | jsonify }},
+      "description": {{ meta_description | jsonify }},
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": {{ website_id | jsonify }}
+      },
+      "inLanguage": "en-AU"
+    }
+    {% endif %}
+  ]
+}
+</script>

@@ -1,0 +1,114 @@
+
+name: Test Jekyll build
+
+on:
+  push:
+    branches:
+      - jekyll-upgrade
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build Jekyll website
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+     
+      - name: Inspect generated website
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files in repository:"
+          ls -la
+          echo "Generated website files:"
+          ls -la _site || true
+          echo "Looking for homepage:"
+          find . -name index.html | head -30
+          echo "Jekyll configuration:"
+          cat _config.yml
+          echo "Number of individual post pages:"
+          find _site/posts -maxdepth 1 -name '*.html' | wc -l
+          echo "Number of individual video pages:"
+          find _site/videos -maxdepth 1 -name '*.html' | wc -l
+          echo "Sample post pages:"
+          find _site/posts -maxdepth 1 -name '*.html' | head -5
+          echo "Sample video pages:"
+          find _site/videos -maxdepth 1 -name '*.html' | head -5
+          
+          echo "Checking individual archive pages..."
+          
+          python3 - <<'PY'
+          from pathlib import Path
+          import csv
+          import re
+          import sys
+          
+          site = Path("_site")
+          errors = []
+          
+          def load_records(filename):
+              with open(filename, encoding="utf-8-sig", newline="") as f:
+                  return list(csv.DictReader(f))
+          
+          posts = load_records("data/posts.csv")
+          videos = load_records("data/videos.csv")
+          
+          print(f"Post records: {len(posts)}")
+          print(f"Video records: {len(videos)}")
+          
+          for category, records in [("posts", posts), ("videos", videos)]:
+              for record in records:
+                  record_id = record.get("archive_id" if category == "posts" else "video_id", "").strip()
+                  if not record_id:
+                      errors.append(f"{category}: missing ID")
+                      continue
+          
+                  path = site / category / f"{record_id}.html"
+                  if not path.is_file():
+                      errors.append(f"Missing page: {path}")
+                      continue
+          
+                  html = path.read_text(encoding="utf-8")
+                  visible = re.sub(r"<[^>]+>", " ", html)
+                  visible = re.sub(r"\s+", " ", visible).strip()
+          
+                  if len(visible) < 100:
+                      errors.append(f"Very little text: {path}")
+          
+          sitemap = site / "sitemap.xml"
+          if not sitemap.is_file():
+              errors.append("Missing sitemap.xml")
+          else:
+              sitemap_text = sitemap.read_text(encoding="utf-8")
+              for category, records in [("posts", posts), ("videos", videos)]:
+                  for record in records:
+                      record_id = record.get("archive_id" if category == "posts" else "video_id", "").strip()
+                      if record_id and f"/{category}/{record_id}.html" not in sitemap_text:
+                          errors.append(f"Missing sitemap URL: {category}/{record_id}")
+          
+          print(f"Errors found: {len(errors)}")
+          for error in errors[:30]:
+              print("ERROR:", error)
+          
+          if errors:
+              sys.exit(1)
+          
+          print("All archive pages and sitemap URLs passed.")
+          PY
+
+

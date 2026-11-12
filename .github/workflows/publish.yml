@@ -1,33 +1,46 @@
+
 name: Build and publish archive
+
 on:
   push:
-    branches: [main]
-    paths:
-      - 'posts.csv'
-      - 'videos.csv'
-      - 'generate_site.py'
-      - '.github/workflows/publish.yml'
+    branches:
+      - main
   workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: pages
   cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          python-version: '3.12'
-      - name: Generate and validate archive
-        run: python generate_site.py
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build Jekyll website
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-      - uses: actions/deploy-pages@v4
-        id: deployment
+
+      - name: Deploy website
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,12 @@
+{% assign record = include.record %}
+{% assign kind = include.kind %}
+<article class="card">
+  <p class="meta"><time datetime="{{ record.date_iso }}">{{ record.date_display }}</time></p>
+  <h2><a href="{{ record.url | relative_url }}">{{ record.title | escape }}</a></h2>
+  <p class="card-text">{{ record.excerpt | escape }}</p>
+  {% if kind == "posts" and record.video_url %}
+  <p class="tag">Video attached</p>
+  {% elsif kind == "videos" %}
+  <p class="tag">Video record</p>
+  {% endif %}
+</article>

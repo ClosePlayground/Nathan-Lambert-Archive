@@ -1,0 +1,17 @@
+title: Nathan Lambert Archive
+description: An unofficial archive of public Facebook posts and videos from Nathan Lambert, the Victorian Labor Member for Preston.
+url: https://closeplayground.github.io
+baseurl: /Nathan-Lambert-Archive
+lang: en-AU
+timezone: Australia/Melbourne
+locale: en-AU
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github
+  - .jekyll-cache

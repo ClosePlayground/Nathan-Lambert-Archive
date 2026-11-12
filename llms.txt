@@ -1,0 +1,37 @@
+---
+layout: null
+permalink: /llms.txt
+---
+{%- assign newest_post = site.data.archive.posts.first -%}
+{%- assign oldest_post = site.data.archive.posts.last -%}
+{%- assign newest_video = site.data.archive.videos.first -%}
+{%- assign oldest_video = site.data.archive.videos.last -%}
+# Nathan Lambert Archive
+
+> Unofficial static archive of public Facebook posts and videos from Nathan Lambert, the Victorian Labor Member for Preston.
+
+- Posts: {{ site.data.archive.posts | size }} records from {{ oldest_post.date_display }} to {{ newest_post.date_display }}
+- Videos: {{ site.data.archive.videos | size }} records from {{ oldest_video.date_display }} to {{ newest_video.date_display }}
+- Dates: Melbourne time
+- Language: Australian English
+- Status: unofficial and not affiliated with Nathan Lambert, the Victorian Government, or the Labor Party
+
+## Browse
+
+- [Posts archive]({{ '/' | absolute_url }})
+- [Video archive]({{ '/videos/' | absolute_url }})
+- [All content]({{ '/all/' | absolute_url }})
+- [About the archive]({{ '/about/' | absolute_url }})
+- [Sitemap]({{ '/sitemap.xml' | absolute_url }})
+- [Atom feed]({{ '/feed.xml' | absolute_url }})
+
+## Data
+
+- [Posts CSV]({{ '/data/posts.csv' | absolute_url }})
+- [Videos CSV]({{ '/data/videos.csv' | absolute_url }})
+
+## Use
+
+Each post and video has a permanent page with its date, text or description, and any links found in the Facebook export. Media files and full spoken-word transcripts are not hosted here. A video description is not a transcript.
+
+When citing a record, link to its page and include the record date. The archive is a secondary source. For official statements, use Nathan Lambert's office or parliamentary records.

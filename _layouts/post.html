@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<article class="article">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Posts</a>
+    <span aria-hidden="true">/</span>
+    <span>{{ page.date_display }}</span>
+  </nav>
+  <p class="meta"><time datetime="{{ page.date_iso }}">{{ page.date_display }}</time> <span aria-hidden="true">·</span> {{ page.record_id }}</p>
+  <h1>{{ page.title }}</h1>
+  {% if page.text == "" %}
+  <p class="notice">This export record has no post text. It may be a shared link, a media post, or another kind of Facebook activity.</p>
+  {% else %}
+  <div class="post-text">{{ page.text | escape }}</div>
+  {% endif %}
+  {% if page.media_count > 0 %}
+  <p class="meta">The export references {{ page.media_count }} media file{% if page.media_count != 1 %}s{% endif %}. Media files are not hosted here.</p>
+  {% endif %}
+  {% if page.links.size > 0 %}
+  <h2>Links in this post</h2>
+  <ul class="links">
+    {% for link in page.links %}
+    <li><a href="{{ link.url | escape }}" rel="noopener noreferrer nofollow">{{ link.label | escape }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% if page.video_url %}
+  <h2>Related video</h2>
+  <p><a href="{{ page.video_url | relative_url }}">{{ page.video_title | escape }}</a></p>
+  {% endif %}
+  {% if page.facebook_url != "" %}
+  <p><a href="{{ page.facebook_url | escape }}" rel="noopener noreferrer nofollow">View the original Facebook post</a></p>
+  {% endif %}
+  {% if page.transcript != "" %}
+  <h2>Transcript</h2>
+  <div class="post-text">{{ page.transcript | escape }}</div>
+  {% endif %}
+  <p class="back"><a href="{{ '/' | relative_url }}">Back to posts</a></p>
+</article>
