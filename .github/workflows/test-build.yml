@@ -1,0 +1,37 @@
+
+name: Test Jekyll build
+
+on:
+  push:
+    branches:
+      - jekyll-upgrade
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build Jekyll website
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Check generated pages
+        run: |
+          test -f _site/index.html
+          test -d _site/posts
+          test -d _site/videos
+          test -f _site/sitemap.xml
+          echo "Jekyll build completed successfully."
