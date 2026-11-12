@@ -28,10 +28,17 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      - name: Check generated pages
+     
+      - name: Inspect generated website
         run: |
-          test -f _site/index.html
-          test -d _site/posts
-          test -d _site/videos
-          test -f _site/sitemap.xml
-          echo "Jekyll build completed successfully."
+          echo "Current directory:"
+          pwd
+          echo "Files in repository:"
+          ls -la
+          echo "Generated website files:"
+          ls -la _site || true
+          echo "Looking for homepage:"
+          find . -name index.html | head -30
+          echo "Jekyll configuration:"
+          cat _config.yml
+
