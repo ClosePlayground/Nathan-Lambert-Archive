@@ -73,7 +73,7 @@ jobs:
           
           for category, records in [("posts", posts), ("videos", videos)]:
               for record in records:
-                  record_id = record.get("id", "").strip()
+                  record_id = record.get("archive_id", "").strip()
                   if not record_id:
                       errors.append(f"{category}: missing ID")
                       continue
@@ -97,7 +97,7 @@ jobs:
               sitemap_text = sitemap.read_text(encoding="utf-8")
               for category, records in [("posts", posts), ("videos", videos)]:
                   for record in records:
-                      record_id = record.get("id", "").strip()
+                      record_id = record.get("archive_id", "").strip()
                       if record_id and f"/{category}/{record_id}.html" not in sitemap_text:
                           errors.append(f"Missing sitemap URL: {category}/{record_id}")
           
