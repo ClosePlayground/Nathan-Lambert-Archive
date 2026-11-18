@@ -116,6 +116,7 @@ vl=canonical('videos/',vl).replace('</head>','<script src="'+BASE+'site.js" defe
 (root/'videos'/'index.html').write_text(vl,encoding='utf-8')
 urls=['', 'videos/']+[f'posts/{p["archive_id"]}.html' for p in posts]+[f'videos/{v["video_id"]}.html' for v in videos]
 (root/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>'+xesc(BASE+u)+'</loc></url>\n' for u in urls)+'</urlset>',encoding='utf-8')
+(root/'sitemap.txt').write_text('\n'.join(BASE+u for u in urls)+'\n', encoding='utf-8')
 (root/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+BASE+'sitemap.xml\n',encoding='utf-8')
 (root/'.nojekyll').write_text('',encoding='utf-8')
 # Verify every source record has its own output page.
