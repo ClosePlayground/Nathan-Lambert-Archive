@@ -1,3 +1,4 @@
+
 ---
 layout: default
 ---
@@ -11,6 +12,11 @@ layout: default
   <h1>{{ page.title }}</h1>
   <p class="meta">Export filename: <code>{{ page.filename | escape }}</code></p>
   <p class="notice">The video file is not hosted in this archive.</p>
+
+  {% if page.facebook_url and page.facebook_url != "" %}
+  <p><a href="{{ page.facebook_url | escape }}" target="_blank" rel="noopener noreferrer">Watch original video on Facebook</a></p>
+  {% endif %}
+
   {% if page.text == "" %}
   <p class="notice">No video description was included in the export.</p>
   {% else %}
