@@ -13,7 +13,9 @@ module NathanLambertArchive
       @site = site
 
       posts = load_posts
-      videos = load_videos
+      videos = load_videos.select do |video|
+        !video["text"].empty? || !video["transcript"].empty?
+      end
       link_records(posts, videos)
 
       site.data["archive"] = {
