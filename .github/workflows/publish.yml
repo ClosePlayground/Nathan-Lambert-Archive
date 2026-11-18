@@ -29,10 +29,34 @@ jobs:
           ruby-version: '3.2'
           bundler-cache: true
 
-      - name: Build Jekyll website
+          - name: Build Jekyll website
         run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
+
+      - name: Generate plain-text sitemap
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from urllib.parse import urljoin
+
+          base = "https://closeplayground.github.io/Nathan-Lambert-Archive/"
+          root = Path("_site")
+          urls = []
+
+          for path in sorted(root.rglob("*.html")):
+              relative = path.relative_to(root).as_posix()
+              if relative == "index.html":
+                  relative = ""
+              elif relative.endswith("/index.html"):
+                  relative = relative[:-10]
+              urls.append(urljoin(base, relative))
+
+          (root / "sitemap.txt").write_text(
+              "\n".join(urls) + "\n", encoding="utf-8"
+          )
+          print(f"Generated sitemap.txt with {len(urls)} URLs")
+          PY
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
