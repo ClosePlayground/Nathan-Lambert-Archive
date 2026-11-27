@@ -12,11 +12,19 @@ module NathanLambertArchive
     def generate(site)
       @site = site
 
-      posts = load_posts
+     
+      posts = load_posts.select do |post|
+        !post["text"].strip.empty? ||
+          !post["transcript"].strip.empty? ||
+          !post["links"].empty?
+      end
+      
       videos = load_videos.select do |video|
         !video["text"].empty? || !video["transcript"].empty?
       end
+      
       link_records(posts, videos)
+
 
       site.data["archive"] = {
         "posts" => posts,
