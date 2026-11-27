@@ -12,7 +12,6 @@ module NathanLambertArchive
     def generate(site)
       @site = site
 
-     
       posts = load_posts.select do |post|
         !post["text"].strip.empty? ||
           !post["transcript"].strip.empty? ||
@@ -24,7 +23,6 @@ module NathanLambertArchive
       end
       
       link_records(posts, videos)
-
 
       site.data["archive"] = {
         "posts" => posts,
